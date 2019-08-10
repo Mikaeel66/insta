@@ -28,17 +28,25 @@ class CreatePage extends React.Component {
                 alt=''
                 className='w-100 mv3'
               />}
+
+                <img src = { require('./muumi.jpeg')} alt='' width= {55} height={55} />
+
+                <br />
+                  <br />
+              Anna osoote: <br />
+              {[1,2,3].map(x=>(x*10) +'\n')}
             <input
               className='w-100 pa3 mv2'
               value={this.state.imageUrl}
-              placeholder='Image Url'
+              placeholder='Url'
               onChange={e => this.setState({imageUrl: e.target.value})}
               autoFocus
             />
+             kuvaus:
             <input
               className='w-100 pa3 mv2'
               value={this.state.description}
-              placeholder='Description'
+              placeholder='Kuvaus'
               onChange={e => this.setState({description: e.target.value})}
             />
             {this.state.description &&
@@ -60,7 +68,7 @@ class CreatePage extends React.Component {
     await this.props.createPostMutation({variables: {description, imageUrl}})
     this.props.history.replace('/')
   }
-  
+
 }
 
 const CREATE_POST_MUTATION = gql`
